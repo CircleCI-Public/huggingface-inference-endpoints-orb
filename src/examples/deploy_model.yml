@@ -1,0 +1,11 @@
+when:
+  not:
+    equal: ["{}", << pipeline.trigger_parameters.webhook.body >>]
+jobs:
+  - huggingface-inference-endpoints/update_inference_endpoint:
+      context:
+        - whook
+      webhook_body: << pipeline.trigger_parameters.webhook.body >>
+      branch_name: main
+      inference_endpoint_name: inference-endpoint-name
+      organization_name: circleci
