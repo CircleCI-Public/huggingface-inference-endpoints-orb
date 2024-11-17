@@ -1,0 +1,20 @@
+description: >
+  This example defines a CircleCI workflow that uses the huggingface-inference-endpoints orb to:
+    - Deploy the model to an inference endpoint upon receiving a webhook with updated model in repo
+usage:
+  version: 2.1
+  orbs:
+    aws-sagemaker: circleci/huggingface-inference-endpoints@1.0
+  workflows:
+    deploy-model-with-webhook:
+      when:
+        not:
+          equal: ["{}", << pipeline.trigger_parameters.webhook.body >>]
+      jobs:
+        - huggingface-inference-endpoints/deploy_model_with_webhook:
+            context:
+              - context-with-huggingface-token
+            webhook_body: << pipeline.trigger_parameters.webhook.body >>
+            branch_name: main
+            inference_endpoint_name: inference-endpoint-name
+            organization_name: circleci
