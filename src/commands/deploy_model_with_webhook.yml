@@ -27,7 +27,7 @@ steps:
         fi
 
         # exit if action is not update and scope is not repo.content
-        if [[ "$(jq -r '.event.action' <<< "$OUTPUT")" != "update" || "$(jq -r '.event.scope' <<< "$OUTPUT")" != "repo.content" ]]; then
+        if [[ "$(jq -r '.event.action' <<< "$WEBHOOK_BODY")" != "update" || "$(jq -r '.event.scope' <<< "$WEBHOOK_BODY")" != "repo.content" ]]; then
           echo "Webhook body action is not update or scope is not repo.content"
           exit 0
         fi
