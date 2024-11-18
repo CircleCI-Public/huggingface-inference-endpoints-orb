@@ -26,6 +26,12 @@ steps:
           exit 1
         fi
 
+        # exit if action is not update and scope is not repo.content
+        if [[ "$(jq -r '.event.action' <<< "$OUTPUT")" != "update" || "$(jq -r '.event.scope' <<< "$OUTPUT")" != "repo.content" ]]; then
+          echo "Webhook body action is not update or scope is not repo.content"
+          exit 0
+        fi
+
         # get new sha and old sha from webhook body for given branch
         read -r OLD_SHA NEW_SHA \<<< $(jq -r --arg branch "$BRANCH_NAME" '.updatedRefs[] | select(.ref == "refs/heads/\($branch)") | "\(.oldSha) \(.newSha)"' \<<< "$WEBHOOK_BODY")
         echo "Old revision: $OLD_SHA"
