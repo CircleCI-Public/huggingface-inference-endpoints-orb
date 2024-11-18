@@ -2,7 +2,7 @@ description: >
   This example defines a CircleCI workflow that uses the huggingface-inference-endpoints orb to:
     - Deploy the model to an inference endpoint upon receiving a webhook with updated model in repo
   Setup: create a custom webhook on CircleCI and webhook on Hugging Face.
-  Instructions can be found here: 
+  Instructions can be found here:
   https://github.com/CircleCI-Public/huggingface-inference-endpoints-orb?tab=readme-ov-file#Setup
 usage:
   version: 2.1
