@@ -1,0 +1,24 @@
+description: |
+  This job deploys available model through a webhook trigger to a given huggingface inference endpoint
+docker:
+  - image: cimg/base:current-22.04
+parameters:
+  webhook_body:
+    description: triggered webhook payload
+    type: string
+  branch_name:
+    description: branch name
+    type: string
+    default: main
+  inference_endpoint_name:
+    description: huggingface inference endpoint name
+    type: string
+  organization_name:
+    description: huggingface organization name
+    type: string
+steps:
+  - deploy_model_with_webhook:
+      webhook_body: << parameters.webhook_body >>
+      branch_name: << parameters.branch_name >>
+      inference_endpoint_name: << parameters.inference_endpoint_name >>
+      organization_name: << parameters.organization_name >>
