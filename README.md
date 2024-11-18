@@ -8,7 +8,16 @@ This repository has the code for the the CircleCI [Hugging Face inference endpoi
 
 ### Setup
 
-In order to use the Hugging Face inference endpoints Orb on CircleCI you will need to setup environment variables either in context or project env vars. Required variables are HF_TOKEN.
+In order to use the Hugging Face inference endpoints Orb on CircleCI you will need to setup environment variables either in context or project env vars. Required variables are `HF_TOKEN`.
+
+#### Setting up webhooks on Hugging Face and CircleCI
+
+1. Create a new custom webhook on CircleCI following the [instructions here](https://circleci.com/docs/2.0/webhooks/#creating-a-webhook).
+2. Create a new webhook on Hugging Face following the [instructions here](https://huggingface.co/docs/hub/en/webhooks#create-your-webhook).
+
+> ℹ️ While creating webhook in Hugging Face, make sure to fill in `Webhook URL` as `https://internal.circleci.com/private/soc/e/<WEBHOOK_ID>?secret=<SECRET>`. Instead of filling in the secret in `Secret (optional)` section on Hugging Face.
+
+![alt text](./images/hf-webhook.png)
 
 ### Use In Config
 

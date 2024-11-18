@@ -7,7 +7,7 @@ parameters:
     description: triggered webhook payload
     type: string
   branch_name:
-    description: brancn name
+    description: branch name
     type: string
     default: main
   inference_endpoint_name:
@@ -17,7 +17,7 @@ parameters:
     description: huggingface organization name
     type: string
 steps:
-  - deploy_model_to_hf_endpoint:
+  - deploy_model_with_webhook:
       webhook_body: << parameters.webhook_body >>
       branch_name: << parameters.branch_name >>
       inference_endpoint_name: << parameters.inference_endpoint_name >>

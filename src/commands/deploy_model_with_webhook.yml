@@ -5,7 +5,7 @@ parameters:
     description: triggered webhook payload
     type: string
   branch_name:
-    description: brancn name
+    description: branch name
     type: string
     default: main
   inference_endpoint_name:
