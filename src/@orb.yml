@@ -6,3 +6,6 @@ description: >
 display:
   home_url: "https://github.com/CircleCI-Public/huggingface-inference-endpoints-orb"
   source_url: "https://github.com/CircleCI-Public/huggingface-inference-endpoints-orb"
+
+orbs:
+  jq: circleci/jq@1.6.0
