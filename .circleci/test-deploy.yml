@@ -9,7 +9,7 @@ filters: &filters
 
 release-filters: &release-filters
   branches:
-    only: lint-fixes
+    ignore: /.*/
   tags:
     only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
 
@@ -22,7 +22,7 @@ workflows:
       - orb-tools/publish:
           orb_name: circleci/huggingface-inference-endpoints
           vcs_type: << pipeline.project.type >>
-          pub_type: dev
+          pub_type: production
           requires:
             - orb-tools/pack
           context: Circleci-Ai-Orb-Publishing
