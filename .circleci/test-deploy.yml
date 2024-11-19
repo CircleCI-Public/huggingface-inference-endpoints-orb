@@ -22,7 +22,7 @@ workflows:
       - orb-tools/publish:
           orb_name: circleci/huggingface-inference-endpoints
           vcs_type: << pipeline.project.type >>
-          pub_type: production
+          pub_type: dev
           requires:
             - orb-tools/pack
           context: Circleci-Ai-Orb-Publishing
